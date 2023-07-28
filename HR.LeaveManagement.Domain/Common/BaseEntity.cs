@@ -1,6 +1,6 @@
 ﻿namespace HR.LeaveManagement.Domain.Common;
 
-public class BaseEntity
+public abstract class BaseEntity
 {
     public int Id { get; set; }
 
