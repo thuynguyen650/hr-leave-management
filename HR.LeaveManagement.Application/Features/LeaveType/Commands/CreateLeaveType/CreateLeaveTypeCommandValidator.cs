@@ -15,8 +15,8 @@ public class CreateLeaveTypeCommandValidator : AbstractValidator<CreateLeaveType
             .MaximumLength(70).WithMessage("{PropertyName} must not be fewer than 70 characters");
 
         RuleFor(p => p.DefaultDays)
-            .LessThanOrEqualTo(100).WithMessage("{PropertyName} must not be greater than 100")
-            .GreaterThan(1).WithMessage("{PropertyName} must be greater than 1");
+            .LessThan(100).WithMessage("{PropertyName} cannot exceed 100")
+            .GreaterThan(1).WithMessage("{PropertyName} cannot be less than 1");
 
         RuleFor(q => q)
             .MustAsync(LeaveTypeMustUnique)
