@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace HR.LeaveManagement.Persistence;
 
-public class PersistenceServiceRegistration
+public static class PersistenceServicesRegistration
 {
     public static IServiceCollection AddPersistenceServiceRegistration(IServiceCollection services,
         IConfiguration configuration)
