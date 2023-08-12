@@ -3,9 +3,9 @@ using System.Reflection;
 
 namespace HR.LeaveManagement.Application;
 
-public class ApplicationServiceRegistration
+public static class ApplicationServiceRegistration
 {
-    public static IServiceCollection AddApplicationServiceRegistration(IServiceCollection services)
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
