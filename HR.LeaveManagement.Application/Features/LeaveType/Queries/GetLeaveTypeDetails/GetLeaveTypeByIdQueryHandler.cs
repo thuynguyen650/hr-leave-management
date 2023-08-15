@@ -6,23 +6,23 @@ using MediatR;
 
 namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 
-public class GetLeaveTypeDetailsQueryHandler : IRequestHandler<GetLeaveTypeDetailsQuery, LeaveTypeDetailsDto>
+public class GetLeaveTypeByIdQueryHandler : IRequestHandler<GetLeaveTypeByIdQuery, LeaveTypeDetailsDto>
 {
     private readonly IMapper _mapper;
 
     private readonly ILeaveTypeRepository _repository;
 
-    private readonly IAppLogger<GetLeaveTypeDetailsQueryHandler> _logger;
+    private readonly IAppLogger<GetLeaveTypeByIdQueryHandler> _logger;
 
-    public GetLeaveTypeDetailsQueryHandler(IMapper mapper, ILeaveTypeRepository repository,
-        IAppLogger<GetLeaveTypeDetailsQueryHandler> logger)
+    public GetLeaveTypeByIdQueryHandler(IMapper mapper, ILeaveTypeRepository repository,
+        IAppLogger<GetLeaveTypeByIdQueryHandler> logger)
     {
         _mapper = mapper;
         _repository = repository;
         _logger = logger;
     }
 
-    public async Task<LeaveTypeDetailsDto> Handle(GetLeaveTypeDetailsQuery request, CancellationToken cancellationToken)
+    public async Task<LeaveTypeDetailsDto> Handle(GetLeaveTypeByIdQuery request, CancellationToken cancellationToken)
     {
         // query from db
         var leaveType = await _repository.GetByIdAsync(request.Id);
