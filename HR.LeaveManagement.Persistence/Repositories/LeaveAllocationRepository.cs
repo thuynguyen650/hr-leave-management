@@ -37,6 +37,7 @@ public class LeaveAllocationRepository : GenericRepository<LeaveAllocation>, ILe
     {
         return await _context.LeaveAllocations
             .Where(a => a.Id == id)
+            .Include(a => a.LeaveType)
             .FirstOrDefaultAsync();
     }
 
