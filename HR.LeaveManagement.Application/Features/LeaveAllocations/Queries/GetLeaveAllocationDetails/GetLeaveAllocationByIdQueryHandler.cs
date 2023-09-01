@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Application.Exceptions;
+using HR.LeaveManagement.Domain;
 using MediatR;
 
 namespace HR.LeaveManagement.Application.Features.LeaveAllocations.Queries.GetLeaveAllocationDetails;
@@ -17,6 +19,11 @@ public class GetLeaveAllocationByIdQueryHandler : IRequestHandler<GetLeaveAlloca
     public async Task<LeaveAllocationDetailsDto> Handle(GetLeaveAllocationByIdQuery request, CancellationToken cancellationToken)
     {
         var leaveAllocation = await _leaveAllocationRepository.GetLeaveAllocationById(request.Id);
+
+        if (leaveAllocation == null)
+        {
+            throw new NotFoundException(nameof(leaveAllocation), request.Id);
+        }
 
         var data = _mapper.Map<LeaveAllocationDetailsDto>(leaveAllocation);
 
